@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input id="username" >
+<button id="button">test</button>
+<script type="text/javascript">
+
+(function(text){
+	
+	document.getElementById("button").onclick=function(){
+		var val=text.value;
+		console.log(val);
+	}
+	
+	
+})(document.getElementById("username"));
+
+</script>
+
+</body>
+</html>
