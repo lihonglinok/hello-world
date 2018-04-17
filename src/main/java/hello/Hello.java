@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 
 
 public class Hello {
