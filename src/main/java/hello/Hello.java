@@ -26,7 +26,6 @@ public class Hello {
 				System.out.println(rs.getString(2));
 				System.out.println(rs.getString(3));
 			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -36,9 +35,7 @@ public class Hello {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello world!");
-		System.out.println("Hello world!");
+
 	}
 
 }
