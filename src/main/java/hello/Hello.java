@@ -3,10 +3,13 @@ package hello;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+
 
 public class Hello {
 
@@ -19,13 +22,24 @@ public class Hello {
 			String username=p.getProperty("username");
 			String password=p.getProperty("password");
 			Connection conn=DriverManager.getConnection(url, username, password);
-			Statement statement=conn.createStatement();
-			ResultSet rs=statement.executeQuery("select * from t_user");
-			while(rs.next()) {
-				System.out.println(rs.getInt(1));
-				System.out.println(rs.getString(2));
-				System.out.println(rs.getString(3));
+			String sql="insert into t_user value(null,?,?)";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			long start=System.currentTimeMillis();
+			for(int i=0;i<10;i++) {
+				double d=Math.random();
+				String name=String.valueOf(d);
+				d=Math.random();
+				String pwd=String.valueOf(d);
+				ps.setString(1, name);
+				ps.setString(2, pwd);
+				ps.addBatch();
 			}
+			ps.executeBatch();
+			ps.clearBatch();
+			ps.close();
+			conn.close();
+			long end=System.currentTimeMillis();
+			System.out.println("ºÄÊ±£º"+(end-start)+"ºÁÃë");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
