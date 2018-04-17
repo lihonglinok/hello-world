@@ -35,8 +35,8 @@ public class Hello {
 	
 	
 	public static void main(String[] args) {
-		System.out.println("adsfasd");
-		System.out.println("adsfasd");
+		// TODO Auto-generated method stub
+		System.out.println("Wodeadfsdfdsf");
 	}
 
 }
